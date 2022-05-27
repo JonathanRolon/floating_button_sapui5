@@ -6,7 +6,8 @@ sap.ui.define([
 	return {
 
 		buildList: function () {
-			var custom_style = "bottom:235px;"; // por parámetro
+
+			var bottom = 0;
 			var actions = [{
 				title: "TU FACTURA",
 				url: "https://www.claro.com.ar/negocios/asistencia/tu-factura",
@@ -38,7 +39,11 @@ sap.ui.define([
 				style: "float:right",
 				icon: "&#xe041"
 			}];
-			var list = "<ul id='my-list' style='" + custom_style + "' class='my-ul'>";
+			bottom = 55 + 35 * (actions.length - 1);
+
+			var custom_style = "bottom:" + bottom + "px;"; // por parámetro
+
+			var list = "<ul id='my-list' style='" + custom_style + "'  class='my-ul'>";
 
 			actions.forEach(function (action) {
 				list +=
@@ -48,7 +53,6 @@ sap.ui.define([
 					'\', \'_blank\')" class="sapMBtnBase sapMBtn sapMBtnInverted">' +
 					'<span class="sapMBtnInner sapMBtnHoverable sapMFocusable sapMBtnText sapMBtnIconFirst sapMBtnNeutral">' +
 					'<span class="sapMBtnContent">' +
-					// "<i class='fa fa-address-book-o' aria-hidden='true'></i>" +
 					'<bdi aria-live="off">' + action.title + '</bdi></span>' +
 					'<span id="idBotonContacto-img" data-sap-ui-icon-content="' + action.icon +
 					'" role="presentation" aria-hidden="true" class="sapUiIcon sapUiIconMirrorInRTL sapMBtnCustomIcon sapMBtnIcon sapMBtnIconRight" style="font-family: \'SAP\\2dicons\';">' +
